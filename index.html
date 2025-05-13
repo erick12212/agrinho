@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Festejando a Conexão Campo-Cidade - Agrinho</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
     <div class="header-content">
       <h1>Festejando a Conexão Campo-Cidade</h1>
       <p>Com o Programa Agrinho</p>
+      <p class="author-name">por Erick Eberhardt</p>
     </div>
   </header>
 
   <main>
     <section class="section">
-      <div class="image-wrapper">
-        <img src="images/campo.jpg" alt="Campo" class="section-image">
-      </div>
       <div class="text-content">
         <h2>O Campo</h2>
         <p>O campo é onde a natureza e a agricultura se encontram, gerando sustento e beleza.</p>
@@ -31,35 +30,30 @@
         <h2>A Cidade</h2>
         <p>A cidade representa o desenvolvimento, a inovação e a transformação social.</p>
       </div>
-      <div class="image-wrapper">
-        <img src="images/cidade.jpg" alt="Cidade" class="section-image">
-      </div>
     </section>
 
     <section class="section">
-      <div class="image-wrapper">
-        <img src="images/campo.jpg" alt="Conexão" class="section-image">
-      </div>
       <div class="text-content">
         <h2>A Conexão</h2>
         <p>Juntas, as forças do campo e da cidade criam um futuro mais sustentável para todos.</p>
       </div>
     </section>
 
-    <!-- Nova seção: Sobre o Programa Agrinho -->
     <section class="about-program">
       <h2>Sobre o Programa Agrinho</h2>
       <p>O Agrinho busca promover a integração do campo e cidade, contribuindo para a educação no campo e levando inovação à cidade.</p>
-      <button class="btn-learn-more">Saiba Mais</button>
+      <button class="btn-learn-more" onclick="toggleInfo()">Saiba Mais</button>
+      <div id="more-info" class="hidden-info">
+        <p>O programa também envolve atividades educacionais, concursos e incentiva o protagonismo juvenil com foco em sustentabilidade, cidadania e inovação.</p>
+      </div>
     </section>
 
-    <!-- Seção de Redes Sociais -->
     <section class="social-section">
       <h2>Conecte-se Conosco</h2>
       <div class="social-icons">
-        <a href="#" target="_blank" class="social-icon"><i class="fa fa-facebook"></i></a>
-        <a href="#" target="_blank" class="social-icon"><i class="fa fa-twitter"></i></a>
-        <a href="#" target="_blank" class="social-icon"><i class="fa fa-instagram"></i></a>
+        <a href="https://instagram.com/agrinho2025" target="_blank" class="social-icon">
+          <i class="fa fa-instagram"></i> @agrinho2025
+        </a>
       </div>
     </section>
   </main>
@@ -68,7 +62,46 @@
     <p>© 2025 Agrinho | Todos os direitos reservados.</p>
   </footer>
 
-  <!-- FontAwesome para ícones sociais -->
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <!-- Modal -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Mais Informações</h2>
+      <p>Quer saber mais sobre o Programa Agrinho? Fique atento às nossas redes sociais e ações em sua cidade!</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleInfo() {
+      document.getElementById('more-info').classList.toggle('show');
+      document.getElementById('infoModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('infoModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('infoModal');
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          entry.target.style.transition = 'all 1s ease-in-out';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>

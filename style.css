@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #e3f9e5; /* Fundo verde claro */
+  background-color: #e3f9e5;
   color: #333;
   line-height: 1.6;
 }
@@ -39,7 +39,7 @@ main {
   flex-wrap: wrap;
   text-align: center;
   opacity: 0;
-  animation: fadeIn 1.5s forwards;
+  transform: translateY(50px);
 }
 
 .section:nth-child(even) {
@@ -56,6 +56,13 @@ main {
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.section-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 .text-content {
@@ -68,6 +75,11 @@ main {
   font-size: 2rem;
   color: #388e3c;
   margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+
+.text-content h2:hover {
+  transform: scale(1.05);
 }
 
 .text-content p {
@@ -103,11 +115,25 @@ main {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  margin-top: 15px;
   transition: background-color 0.3s;
 }
 
 .btn-learn-more:hover {
   background-color: #2e7d32;
+}
+
+.hidden-info {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-in-out;
+  color: white;
+  font-size: 1.1rem;
+  margin-top: 15px;
+}
+
+.hidden-info.show {
+  max-height: 200px;
 }
 
 .social-section {
@@ -125,34 +151,17 @@ main {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .social-icon {
-  font-size: 2rem;
-  color: #388e3c;
-  transition: transform 0.3s;
+  font-size: 1.5rem;
+  color: #388e
 }
 
-.social-icon:hover {
-  transform: scale(1.2);
-}
-
-footer {
-  background-color: #76c7c0;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  font-size: 1rem;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.author-name {
+  font-size: 1.1rem;
+  margin-top: 5px;
+  font-style: italic;
+  color: #dff0ea;
 }
